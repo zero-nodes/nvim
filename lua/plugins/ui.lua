@@ -1,20 +1,33 @@
 return {
-    'folke/noice.nvim',
-    dependencies = {
-      "rcarriga/nvim-dap-ui",
+  'folke/noice.nvim',
+  event = 'VeryLazy',
+  dependencies = {
+    'MunifTanjim/nui.nvim',
+    'rcarriga/nvim-notify',
+  },
+  opts = {
+    lsp = {
+      override = {
+        ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
+        ['vim.lsp.util.stylize_markdown'] = true,
+        ['cmp.entry.get_documentation'] = true,
+      },
     },
-    config = function()
-      require("noice").setup({
-        views = {
-          messages = {
-            view = "popup",
-            size = { min = 10, max = 20 },
-          },
-          health = {
-            view = "popup",
-            size = { min = 20, max = 30 },
-          },
-        },
-      })
-    end
+    presets = {
+      bottom_search = true,
+      command_palette = true,
+      long_message_to_split = true,
+      lsp_doc_border = true,
+    },
+    views = {
+      messages = {
+        view = 'popup',
+        size = { min = 10, max = 20 },
+      },
+      health = {
+        view = 'popup',
+        size = { min = 20, max = 30 },
+      },
+    },
+  },
 }
